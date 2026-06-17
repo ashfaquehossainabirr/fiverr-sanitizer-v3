@@ -1,14 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { sanitizeText } from "./sanitizer";
 
 export default function App() {
+
   const [translatedText, setTranslatedText] = useState("");
   const [isTranslated, setIsTranslated] = useState(false);
 
   const [input, setInput] = useState("");
+  const [debouncedInput, setDebouncedInput] = useState("");
 
-  const normalizedInput = input.trimStart();
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedInput(input);
+    }, 400);
 
+    return () => clearTimeout(timer);
+  }, [input]);
+
+  const normalizedInput = debouncedInput.trimStart();
   const hasRealText = normalizedInput.trim().length > 0;
 
   const sanitized = hasRealText
@@ -36,6 +45,7 @@ export default function App() {
 
   const clearText = () => {
     setInput("");
+    setDebouncedInput("");
     setIsTranslated(false);
     setTranslatedText("");
   };
@@ -87,7 +97,6 @@ export default function App() {
             <textarea
               placeholder="Type your text here..."
               value={input}
-              // onChange={(e) => setInput(e.target.value)}
               onChange={(e) => {
                 setInput(e.target.value);
                 setIsTranslated(false);
