@@ -53,7 +53,27 @@ label {
 }
 
 /* INPUT */
+
 textarea {
+  width: 100%;
+  min-height: 240px;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #dcdcdc;
+  resize: vertical;
+  font-size: 15px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+textarea:focus {
+  border-color: #4f46e5;
+  box-shadow:
+    0 0 0 2px rgba(79, 70, 229, 0.25),
+    0 0 15px rgba(79, 70, 229, 0.35);
+  outline: none
+}
+
+/* textarea {
   width: 100%;
   min-height: 240px;
   padding: 14px;
@@ -67,7 +87,7 @@ textarea:focus {
   outline: none;
   border-color: #4f46e5;
   box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.25);
-}
+} */
 
 /* COUNTER */
 .counter {
