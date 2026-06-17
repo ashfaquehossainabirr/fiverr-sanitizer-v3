@@ -66,7 +66,7 @@ export default function App() {
   return (
     <div className="app-root">
       <div className="app-wrapper">
-        <h1>Fiverr Message Sanitizer</h1>
+        <h1 className="headline-text">Fiverr Message Sanitizer</h1>
 
         <div className="editor-row">
           {/* INPUT */}
